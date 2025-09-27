@@ -1,0 +1,21 @@
+version: 2
+updates:
+  # Enable version updates for npm
+  - package: ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Allow up to 5 open pull requests for npm updates
+    open-pull-requests-limit: 5
+    # Automatically merge minor and patch updates
+    allow:
+      - dependency-type: "development"
+      - dependency-type: "production"
+    # Group updates by dependency
+    groups:
+      minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
