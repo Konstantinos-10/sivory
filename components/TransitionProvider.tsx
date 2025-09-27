@@ -53,7 +53,7 @@ export const TransitionProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       
       {/* Transition Overlay */}
       <AnimatePresence>
-        {isTransitioning && transitionData && (
+        {isTransitioning && transitionData && transitionData.cardRect && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
