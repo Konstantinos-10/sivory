@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import MainNavbar from '@/components/Navbar'
 import { TransitionProvider } from '@/components/TransitionProvider'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 
 export const metadata: Metadata = {
   title: 'Sivory Design - Pergolas Crafted to Perfection',
@@ -16,12 +17,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <TransitionProvider>
-          <MainNavbar />
-          <main>
-            {children}
-          </main>
-        </TransitionProvider>
+        <LanguageProvider>
+          <TransitionProvider>
+            <MainNavbar />
+            <main>
+              {children}
+            </main>
+          </TransitionProvider>
+        </LanguageProvider>
       </body>
     </html>
   )
