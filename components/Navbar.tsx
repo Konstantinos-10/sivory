@@ -11,7 +11,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useRef, useState } from "react";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -587,48 +586,15 @@ export const NavbarButton = ({
   );
 };
 
-// Language Switcher Component
-const LanguageSwitcher = ({ className }: { className?: string }) => {
-  const { language, setLanguage } = useLanguage();
-
-  return (
-    <div className={cn("flex items-center gap-1 p-1 rounded-full bg-white/5 backdrop-blur-sm border border-white/10", className)}>
-      <button
-        onClick={() => setLanguage('en')}
-        className={cn(
-          "px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300",
-          language === 'en'
-            ? "bg-brand-gold text-black"
-            : "text-white/70 hover:text-white hover:bg-white/5"
-        )}
-      >
-        🇬🇧 EN
-      </button>
-      <button
-        onClick={() => setLanguage('gr')}
-        className={cn(
-          "px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300",
-          language === 'gr'
-            ? "bg-brand-gold text-black"
-            : "text-white/70 hover:text-white hover:bg-white/5"
-        )}
-      >
-        🇬🇷 GR
-      </button>
-    </div>
-  );
-};
-
 // Main Navbar Implementation
 const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useLanguage();
 
   const navItems = [
-    { name: t('nav.home'), link: "/" },
-    { name: t('nav.indoorDesign'), link: "/indoor-design" },
-    { name: t('nav.outdoorDesign'), link: "/outdoor-design" },
-    { name: t('nav.about'), link: "/about" },
+    { name: "Home", link: "/" },
+    { name: "Indoor Design", link: "/indoor-design" },
+    { name: "Outdoor Design", link: "/outdoor-design" },
+    { name: "About", link: "/about" },
   ];
 
   return (
@@ -639,26 +605,23 @@ const MainNavbar = () => {
           <>
             <NavbarLogo scrollStage={scrollStage} />
             <NavItems items={navItems} />
-            <div className="flex items-center gap-4">
-              <LanguageSwitcher />
-              <motion.div
-                animate={{
-                  scale: scrollStage >= 3 ? 0.9 : 1,
-                }}
-                transition={{ duration: 0.3 }}
+            <motion.div
+              animate={{
+                scale: scrollStage >= 3 ? 0.9 : 1,
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              <NavbarButton 
+                href="/contact" 
+                variant="primary"
+                className={cn(
+                  "transition-all duration-300",
+                  scrollStage >= 2 && "bg-gradient-to-r from-brand-gold to-brand-gold/80 hover:from-brand-gold/90 hover:to-brand-gold/70"
+                )}
               >
-                <NavbarButton 
-                  href="/contact" 
-                  variant="primary"
-                  className={cn(
-                    "transition-all duration-300",
-                    scrollStage >= 2 && "bg-gradient-to-r from-brand-gold to-brand-gold/80 hover:from-brand-gold/90 hover:to-brand-gold/70"
-                  )}
-                >
-                  {t('nav.contact')}
-                </NavbarButton>
-              </motion.div>
-            </div>
+                Contact
+              </NavbarButton>
+            </motion.div>
           </>
         )}
       </NavBody>
@@ -712,15 +675,14 @@ const MainNavbar = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navItems.length * 0.1 + 0.2, duration: 0.3 }}
-                className="w-full mt-4 pt-4 border-t border-white/10 space-y-4"
+                className="w-full mt-4 pt-4 border-t border-white/10"
               >
-                <LanguageSwitcher className="w-full justify-center" />
                 <NavbarButton 
                   href="/contact" 
                   variant="primary" 
                   className="w-full justify-center py-4 text-lg font-semibold bg-gradient-to-r from-brand-gold to-brand-gold/80 hover:from-brand-gold/90 hover:to-brand-gold/70 touch-manipulation"
                 >
-                  {t('nav.contact')}
+                  Contact Us
                 </NavbarButton>
               </motion.div>
             </MobileNavMenu>
