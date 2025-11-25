@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 interface ProfessionalFooterProps {
-  pageType: 'outdoor' | 'indoor'
+  pageType: 'outdoor' | 'indoor' | 'home'
 }
 
 export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
