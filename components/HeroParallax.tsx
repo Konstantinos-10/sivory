@@ -84,8 +84,8 @@ export const HeroParallax = ({
       className={cn(
         "overflow-hidden antialiased relative flex flex-col self-auto bg-gradient-to-br from-gray-900 via-black to-gray-800",
         isMobile 
-          ? "h-[320vh] py-8 [perspective:800px]" 
-          : "h-[320vh] py-12 [perspective:1000px]",
+          ? "h-[360vh] py-8 [perspective:800px]" 
+          : "h-[370vh] py-12 [perspective:1000px]",
         "[transform-style:preserve-3d]"
       )}
     >
@@ -97,7 +97,7 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className=""
+        className="pb-24 md:pb-32 lg:pb-40"
         data-parallax-section
       >
         {/* Portfolio Section Header - Moving with Parallax */}
