@@ -1,82 +1,83 @@
 import { HeroParallax } from '../components/HeroParallax'
 import ServicesSection from '../components/ServicesSection'
 
-// Sample pergola projects data
+// Sivory Design Projects - Real Portfolio
 const pergolaProjects = [
+  // Outdoor Design Projects
   {
-    title: "Modern Outdoor Lounge",
-    link: "/outdoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&crop=center"
+    title: "Awning Pergola Paradise",
+    link: "/outdoor-design/awning-pergola",
+    thumbnail: "/images/OutdoorDesign/Awning Pergola/tentopergolas_skiasis 1.png"
   },
   {
-    title: "Garden Paradise Pergola",
-    link: "/outdoor-design", 
-    thumbnail: "https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=800&h=600&fit=crop&crop=center"
+    title: "Elegant Outdoor Umbrellas",
+    link: "/outdoor-design/umbrellas", 
+    thumbnail: "/images/OutdoorDesign/Umbrellas/omprelles_skiasis 1.png"
   },
   {
-    title: "Luxury Pool Deck",
-    link: "/outdoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&h=600&fit=crop&crop=center"
+    title: "Premium Blinds Installation",
+    link: "/indoor-design/blinds",
+    thumbnail: "/images/IndoorDesign/Blinds/33.png"
   },
   {
-    title: "Rustic Wood Pergola",
-    link: "/outdoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop&crop=center"
+    title: "Modern Vertical Awnings",
+    link: "/outdoor-design/vertical-awnings",
+    thumbnail: "/images/OutdoorDesign/Vertical Awnings/kathetes_pergoles 1.png"
   },
   {
-    title: "Contemporary Patio",
-    link: "/outdoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&h=600&fit=crop&crop=center"
+    title: "Perforated Fabric Solutions",
+    link: "/outdoor-design/perforated-fabrics",
+    thumbnail: "/images/OutdoorDesign/Perforated Fabrics/Photos SIvory (1280 x 1920 px)/Diatrita Pania 1.png"
   },
   {
-    title: "Elegant Dining Area",
-    link: "/indoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=800&h=600&fit=crop&crop=center"
+    title: "Luxury Curtain Design",
+    link: "/indoor-design/curtains",
+    thumbnail: "/images/IndoorDesign/curtains/30.png"
   },
   {
-    title: "Cozy Reading Nook",
-    link: "/indoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?w=800&h=600&fit=crop&crop=center"
+    title: "Outdoor Wall Covering",
+    link: "/outdoor-design/outdoor-wall-covering",
+    thumbnail: "/images/OutdoorDesign/Outdoor Wall Covering/tapetsaries eksoterikou xorou 1.png"
   },
   {
-    title: "Minimalist Pergola",
-    link: "/outdoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600298882974-c4ce2c8d4e0a?w=800&h=600&fit=crop&crop=center"
+    title: "Contemporary Awning Pergola",
+    link: "/outdoor-design/awning-pergola",
+    thumbnail: "/images/OutdoorDesign/Awning Pergola/tentopergolas_skiasis 3.png"
   },
   {
-    title: "Traditional Gazebo",
-    link: "/outdoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600298882974-c4ce2c8d4e0a?w=800&h=600&fit=crop&crop=center"
+    title: "Designer Wallpaper",
+    link: "/indoor-design/wallpaper",
+    thumbnail: "/images/IndoorDesign/wallpaper/27.png"
   },
   {
-    title: "Modern Steel Frame",
-    link: "/outdoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600566752734-eb6007d5e5e1?w=800&h=600&fit=crop&crop=center"
+    title: "Shade Umbrellas Collection",
+    link: "/outdoor-design/umbrellas",
+    thumbnail: "/images/OutdoorDesign/Umbrellas/omprelles_skiasis 3.png"
   },
   {
-    title: "Vine-Covered Retreat",
-    link: "/outdoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=800&h=600&fit=crop&crop=center"
+    title: "Sophisticated Perforated Fabrics",
+    link: "/outdoor-design/perforated-fabrics",
+    thumbnail: "/images/OutdoorDesign/Perforated Fabrics/Photos SIvory (1280 x 1920 px)/Diatrita Pania 4.png"
   },
   {
-    title: "Sunset Terrace",
-    link: "/outdoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&crop=center"
+    title: "Premium Blinds System",
+    link: "/indoor-design/blinds",
+    thumbnail: "/images/IndoorDesign/Blinds/34.png"
   },
   {
-    title: "Urban Rooftop",
-    link: "/outdoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop&crop=center"
+    title: "Vertical Awning Excellence",
+    link: "/outdoor-design/vertical-awnings",
+    thumbnail: "/images/OutdoorDesign/Vertical Awnings/kathetes_pergoles 3.png"
   },
   {
-    title: "Coastal Pergola",
-    link: "/outdoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&h=600&fit=crop&crop=center"
+    title: "Elegant Curtain Solutions",
+    link: "/indoor-design/curtains",
+    thumbnail: "/images/IndoorDesign/curtains/31.png"
   },
   {
-    title: "Zen Garden Space",
-    link: "/outdoor-design",
-    thumbnail: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&h=600&fit=crop&crop=center"
+    title: "Outdoor Design Mastery",
+    link: "/outdoor-design/awning-pergola",
+    thumbnail: "/images/OutdoorDesign/Awning Pergola/tentopergolas_skiasis 5.png"
   }
 ];
 
