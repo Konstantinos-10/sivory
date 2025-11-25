@@ -13,6 +13,7 @@ import { useTransition } from './TransitionProvider';
 import { useRouter } from 'next/navigation';
 import { useState, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { ImageLightbox } from './ImageLightbox';
 
 export const HeroParallax = ({
   products,
@@ -27,6 +28,22 @@ export const HeroParallax = ({
   const secondRow = products.slice(5, 10);
   const thirdRow = products.slice(10, 15);
   const ref = React.useRef(null);
+  
+  // Lightbox state
+  const [lightboxOpen, setLightboxOpen] = React.useState(false);
+  const [lightboxIndex, setLightboxIndex] = React.useState(0);
+
+  const handleImageClick = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const lightboxImages = products.map(product => ({
+    src: product.thumbnail,
+    title: product.title,
+    category: product.link.includes('outdoor') ? 'Outdoor Design' : 'Indoor Design',
+    description: 'Premium design installation showcasing craftsmanship and attention to detail'
+  }));
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -120,12 +137,13 @@ export const HeroParallax = ({
           "flex flex-row-reverse space-x-reverse mb-20",
           isMobile ? "space-x-8" : "space-x-20"
         )}>
-          {firstRow.map((product) => (
+          {firstRow.map((product, index) => (
             <ProductCard
               product={product}
               translate={translateX}
               key={product.title}
               isMobile={isMobile}
+              onClick={() => handleImageClick(index)}
             />
           ))}
         </motion.div>
@@ -133,12 +151,13 @@ export const HeroParallax = ({
           "flex flex-row mb-20",
           isMobile ? "space-x-8" : "space-x-20"
         )}>
-          {secondRow.map((product) => (
+          {secondRow.map((product, index) => (
             <ProductCard
               product={product}
               translate={translateXReverse}
               key={product.title}
               isMobile={isMobile}
+              onClick={() => handleImageClick(index + 5)}
             />
           ))}
         </motion.div>
@@ -146,16 +165,26 @@ export const HeroParallax = ({
           "flex flex-row-reverse space-x-reverse",
           isMobile ? "space-x-8" : "space-x-20"
         )}>
-          {thirdRow.map((product) => (
+          {thirdRow.map((product, index) => (
             <ProductCard
               product={product}
               translate={translateX}
               key={product.title}
               isMobile={isMobile}
+              onClick={() => handleImageClick(index + 10)}
             />
           ))}
         </motion.div>
       </motion.div>
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        images={lightboxImages}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onNavigate={setLightboxIndex}
+      />
     </div>
   );
 };
@@ -291,6 +320,7 @@ export const ProductCard = ({
   product,
   translate,
   isMobile = false,
+  onClick,
 }: {
   product: {
     title: string;
@@ -299,6 +329,7 @@ export const ProductCard = ({
   };
   translate: MotionValue<number>;
   isMobile?: boolean;
+  onClick?: () => void;
 }) => {
   return (
     <motion.div
@@ -311,16 +342,14 @@ export const ProductCard = ({
       }}
       key={product.title}
       className={cn(
-        "group/product relative shrink-0 touch-manipulation",
+        "group/product relative shrink-0 touch-manipulation cursor-pointer",
         isMobile 
           ? "h-64 w-[20rem] sm:h-80 sm:w-[24rem]" 
           : "h-96 w-[30rem]"
       )}
+      onClick={onClick}
     >
-      <a
-        href={product.link}
-        className="block group-hover/product:shadow-2xl group-hover/product:shadow-brand-gold/20"
-      >
+      <div className="block group-hover/product:shadow-2xl group-hover/product:shadow-brand-gold/20">
         <img
           src={product.thumbnail}
           height="600"
@@ -328,7 +357,7 @@ export const ProductCard = ({
           className="object-cover object-center absolute h-full w-full inset-0 rounded-xl"
           alt={product.title}
         />
-      </a>
+      </div>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none rounded-xl transition-opacity duration-300"></div>
       <div className="absolute inset-0 border-2 border-transparent group-hover/product:border-brand-gold/30 rounded-xl transition-all duration-300"></div>
       <h2 className="absolute bottom-6 left-6 opacity-0 group-hover/product:opacity-100 text-white text-xl font-semibold transition-all duration-300 transform translate-y-4 group-hover/product:translate-y-0">

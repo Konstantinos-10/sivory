@@ -5,7 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { AuroraBackground } from '@/components/AuroraBackground'
 import { ProfessionalFooter } from '@/components/ProfessionalFooter'
+import { ImageLightbox } from '@/components/ImageLightbox'
 import { notFound } from 'next/navigation'
+import { useState } from 'react'
 
 // Category data with their respective images
 const categoryData: Record<string, {
@@ -81,9 +83,19 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const categorySlug = params['category-slug']
   const category = categoryData[categorySlug]
 
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
+
   if (!category) {
     notFound()
   }
+
+  const lightboxImages = category.images.map((image, index) => ({
+    src: image,
+    title: `${category.title} Project ${index + 1}`,
+    category: 'Outdoor Design',
+    description: 'Premium outdoor design installation showcasing craftsmanship and attention to detail'
+  }))
 
   return (
     <AuroraBackground className="min-h-screen">
@@ -180,6 +192,10 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 transition={{ delay: 0.8 + index * 0.1, duration: 0.8 }}
                 whileHover={{ y: -12, scale: 1.02 }}
                 className="group cursor-pointer"
+                onClick={() => {
+                  setLightboxIndex(index)
+                  setLightboxOpen(true)
+                }}
               >
                 <div className="relative overflow-hidden rounded-3xl shadow-2xl border border-white/10 hover:border-brand-gold/40 transition-all duration-500 bg-black/20 backdrop-blur-sm">
                   <div className="relative w-full h-96">
@@ -249,6 +265,15 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
       {/* Professional Footer */}
       <ProfessionalFooter pageType="outdoor" />
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        images={lightboxImages}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onNavigate={setLightboxIndex}
+      />
     </AuroraBackground>
   )
 }

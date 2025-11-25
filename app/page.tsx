@@ -1,5 +1,6 @@
 import { HeroParallax } from '../components/HeroParallax'
 import ServicesSection from '../components/ServicesSection'
+import { ProfessionalFooter } from '../components/ProfessionalFooter'
 
 // Sivory Design Projects - Real Portfolio
 const pergolaProjects = [
@@ -86,6 +87,7 @@ export default function Home() {
     <main>
       <HeroParallax products={pergolaProjects} />
       <ServicesSection />
+      <ProfessionalFooter pageType="home" />
     </main>
   )
 }
