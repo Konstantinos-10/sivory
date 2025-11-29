@@ -5,46 +5,48 @@ import Link from 'next/link'
 import { AuroraBackground } from '@/components/AuroraBackground'
 import { ProfessionalFooter } from '@/components/ProfessionalFooter'
 import Image from 'next/image'
+import { useI18n } from '@/lib/i18n'
 
 export default function OutdoorDesign() {
+  const { t } = useI18n();
   const categories = [
     {
       id: 1,
-      title: "Awning Pergola",
+      title: t('outdoorDesign.categories.awningPergola.title'),
       slug: "awning-pergola",
-      description: "Contemporary pergolas and awning systems for elegant outdoor shade solutions",
+      description: t('outdoorDesign.categories.awningPergola.description'),
       image: "/images/OutdoorDesign/Awning Pergola/tentopergolas_skiasis 1.png",
       projectCount: 6
     },
     {
       id: 2,
-      title: "Outdoor Wall Covering",
+      title: t('outdoorDesign.categories.outdoorWallCovering.title'),
       slug: "outdoor-wall-covering",
-      description: "Premium wall coverings designed for exterior spaces with style and durability",
+      description: t('outdoorDesign.categories.outdoorWallCovering.description'),
       image: "/images/OutdoorDesign/Outdoor Wall Covering/tapetsaries eksoterikou xorou 1.png",
       projectCount: 4
     },
     {
       id: 3,
-      title: "Perforated Fabrics",
+      title: t('outdoorDesign.categories.perforatedFabrics.title'),
       slug: "perforated-fabrics",
-      description: "Innovative perforated fabric solutions for light control and privacy",
+      description: t('outdoorDesign.categories.perforatedFabrics.description'),
       image: "/images/OutdoorDesign/Perforated Fabrics/Photos SIvory (1280 x 1920 px)/Diatrita Pania 1.png",
       projectCount: 7
     },
     {
       id: 4,
-      title: "Umbrellas",
+      title: t('outdoorDesign.categories.umbrellas.title'),
       slug: "umbrellas",
-      description: "Luxury outdoor umbrellas combining functionality with sophisticated design",
+      description: t('outdoorDesign.categories.umbrellas.description'),
       image: "/images/OutdoorDesign/Umbrellas/omprelles_skiasis 1.png",
       projectCount: 5
     },
     {
       id: 5,
-      title: "Vertical Awnings",
+      title: t('outdoorDesign.categories.verticalAwnings.title'),
       slug: "vertical-awnings",
-      description: "Modern vertical awning systems for optimal sun protection and aesthetics",
+      description: t('outdoorDesign.categories.verticalAwnings.description'),
       image: "/images/OutdoorDesign/Vertical Awnings/kathetes_pergoles 1.png",
       projectCount: 4
     }
@@ -67,17 +69,17 @@ export default function OutdoorDesign() {
             className="text-center mb-20"
           >
             <div className="text-brand-gold text-sm md:text-base font-semibold tracking-[0.2em] uppercase mb-8">
-              Outdoor Design Portfolio
+              {t('outdoorDesign.portfolio')}
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-8 tracking-tight leading-tight">
-              Outdoor <span className="font-bold bg-gradient-to-r from-brand-gold via-brand-gold to-white bg-clip-text text-transparent">Excellence</span>
+              {t('outdoorDesign.title')} <span className="font-bold bg-gradient-to-r from-brand-gold via-brand-gold to-white bg-clip-text text-transparent">{t('outdoorDesign.titleHighlight')}</span>
             </h1>
             
             {/* Decorative line */}
             <div className="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mb-12 w-32" />
             
             <p className="text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-relaxed font-light">
-              Transforming outdoor spaces with premium pergolas, shade solutions, and complete outdoor living experiences that redefine luxury.
+              {t('outdoorDesign.description')}
             </p>
           </motion.div>
 
@@ -97,7 +99,7 @@ export default function OutdoorDesign() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
-                Back to Home
+                {t('common.backToHome')}
               </motion.button>
             </Link>
           </motion.div>
@@ -115,11 +117,11 @@ export default function OutdoorDesign() {
             className="text-center mb-20"
           >
             <h2 className="text-3xl md:text-4xl font-light text-white mb-6 tracking-tight">
-              Outdoor <span className="font-bold text-brand-gold">Categories</span>
+              {t('outdoorDesign.categories.title')} <span className="font-bold text-brand-gold">{t('outdoorDesign.categories.titleHighlight')}</span>
             </h2>
             <div className="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mb-8 w-24" />
             <p className="text-white/70 max-w-2xl mx-auto leading-relaxed">
-              Explore our comprehensive range of outdoor design solutions
+              {t('outdoorDesign.categories.description')}
             </p>
           </motion.div>
           
@@ -152,7 +154,7 @@ export default function OutdoorDesign() {
                         <div className="flex items-center gap-2">
                           <div className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
                           <span className="text-brand-gold text-xs font-bold tracking-wider uppercase">
-                            {category.projectCount} Projects
+                            {category.projectCount} {t('outdoorDesign.projects')}
                           </span>
                         </div>
                       </div>
@@ -179,7 +181,7 @@ export default function OutdoorDesign() {
                       {/* CTA Button */}
                       <div className="flex items-center justify-between pt-4 border-t border-white/10">
                         <span className="text-brand-gold text-sm font-semibold tracking-wide uppercase group-hover:text-white transition-colors duration-300">
-                          Explore Category
+                          {t('outdoorDesign.exploreCategory')}
                         </span>
                         <div className="w-10 h-10 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center group-hover:bg-brand-gold group-hover:border-brand-gold transition-all duration-300">
                           <svg 

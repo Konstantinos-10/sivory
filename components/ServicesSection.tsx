@@ -4,10 +4,12 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/lib/i18n';
 
 const ServicesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const { t } = useI18n();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -39,8 +41,8 @@ const ServicesSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
         </svg>
       ),
-      title: "Custom Design",
-      description: "Bespoke pergola designs tailored to your space, style, and vision. Every project is unique and crafted with precision."
+      title: t("home.services.customDesign.title"),
+      description: t("home.services.customDesign.description")
     },
     {
       icon: (
@@ -48,8 +50,8 @@ const ServicesSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       ),
-      title: "Premium Materials",
-      description: "Only the finest materials are used in our constructions. Weather-resistant, durable, and built to last generations."
+      title: t("home.services.premiumMaterials.title"),
+      description: t("home.services.premiumMaterials.description")
     },
     {
       icon: (
@@ -57,8 +59,8 @@ const ServicesSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
         </svg>
       ),
-      title: "Expert Installation",
-      description: "Professional installation by certified craftsmen with years of experience in outdoor construction and design."
+      title: t("home.services.expertInstallation.title"),
+      description: t("home.services.expertInstallation.description")
     },
     {
       icon: (
@@ -66,8 +68,8 @@ const ServicesSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
         </svg>
       ),
-      title: "Lifetime Support",
-      description: "Comprehensive warranty and ongoing support. We stand behind our work with dedicated customer service for life."
+      title: t("home.services.lifetimeSupport.title"),
+      description: t("home.services.lifetimeSupport.description")
     }
   ];
 
@@ -85,7 +87,7 @@ const ServicesSection = () => {
         >
           <motion.div variants={itemVariants} className="mb-6">
             <span className="inline-block px-6 py-3 bg-white/5 backdrop-blur-xl border border-brand-gold/20 text-brand-gold text-sm font-semibold rounded-full uppercase tracking-[0.2em]">
-              Our Services
+              {t("home.services.title")}
             </span>
           </motion.div>
           
@@ -93,9 +95,9 @@ const ServicesSection = () => {
             variants={itemVariants}
             className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight"
           >
-            Crafting Excellence in
+            {t("home.services.heading")}
             <span className="block font-bold bg-gradient-to-r from-brand-gold via-brand-gold to-white bg-clip-text text-transparent">
-              Every Detail
+              {t("home.services.headingHighlight")}
             </span>
           </motion.h2>
           
@@ -109,8 +111,7 @@ const ServicesSection = () => {
             variants={itemVariants}
             className="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed font-light"
           >
-            From initial concept to final installation, we provide comprehensive pergola solutions 
-            that transform your outdoor space into a masterpiece of design and functionality.
+            {t("home.services.description")}
           </motion.p>
         </motion.div>
 
@@ -174,7 +175,7 @@ const ServicesSection = () => {
             {/* Shimmer effect */}
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
             
-            <span className="relative z-10">Start Your Project</span>
+            <span className="relative z-10">{t("home.services.cta")}</span>
             <svg 
               className="relative z-10 ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" 
               fill="none" 

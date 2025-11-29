@@ -5,30 +5,32 @@ import Link from 'next/link'
 import { AuroraBackground } from '@/components/AuroraBackground'
 import { ProfessionalFooter } from '@/components/ProfessionalFooter'
 import Image from 'next/image'
+import { useI18n } from '@/lib/i18n'
 
 export default function IndoorDesign() {
+  const { t } = useI18n();
   const categories = [
     {
       id: 1,
-      title: "Blinds",
+      title: t('indoorDesign.categories.blinds.title'),
       slug: "blinds",
-      description: "Premium window blinds that combine functionality with elegant design for perfect light control and privacy",
+      description: t('indoorDesign.categories.blinds.description'),
       image: "/images/IndoorDesign/Blinds/33.png",
       projectCount: 3
     },
     {
       id: 2,
-      title: "Curtains",
+      title: t('indoorDesign.categories.curtains.title'),
       slug: "curtains",
-      description: "Luxurious curtain solutions that add sophistication and warmth to any interior space",
+      description: t('indoorDesign.categories.curtains.description'),
       image: "/images/IndoorDesign/curtains/30.png",
       projectCount: 3
     },
     {
       id: 3,
-      title: "Wallpaper",
+      title: t('indoorDesign.categories.wallpaper.title'),
       slug: "wallpaper",
-      description: "Designer wallpapers that transform walls into stunning focal points with texture and style",
+      description: t('indoorDesign.categories.wallpaper.description'),
       image: "/images/IndoorDesign/wallpaper/27.png",
       projectCount: 3
     }
@@ -51,17 +53,17 @@ export default function IndoorDesign() {
             className="text-center mb-20"
           >
             <div className="text-brand-gold text-sm md:text-base font-semibold tracking-[0.2em] uppercase mb-8">
-              Indoor Design Portfolio
+              {t('indoorDesign.portfolio')}
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-8 tracking-tight leading-tight">
-              Interior <span className="font-bold bg-gradient-to-r from-brand-gold via-brand-gold to-white bg-clip-text text-transparent">Excellence</span>
+              {t('indoorDesign.title')} <span className="font-bold bg-gradient-to-r from-brand-gold via-brand-gold to-white bg-clip-text text-transparent">{t('indoorDesign.titleHighlight')}</span>
             </h1>
             
             {/* Decorative line */}
             <div className="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mb-12 w-32" />
             
             <p className="text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-relaxed font-light">
-              Creating sophisticated indoor environments with custom pergola structures and architectural elements that transform spaces into works of art.
+              {t('indoorDesign.description')}
             </p>
           </motion.div>
 
@@ -81,7 +83,7 @@ export default function IndoorDesign() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
-                Back to Home
+                {t('common.backToHome')}
               </motion.button>
             </Link>
           </motion.div>
@@ -99,11 +101,11 @@ export default function IndoorDesign() {
             className="text-center mb-20"
           >
             <h2 className="text-3xl md:text-4xl font-light text-white mb-6 tracking-tight">
-              Indoor <span className="font-bold text-brand-gold">Categories</span>
+              {t('indoorDesign.categories.title')} <span className="font-bold text-brand-gold">{t('indoorDesign.categories.titleHighlight')}</span>
             </h2>
             <div className="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mb-8 w-24" />
             <p className="text-white/70 max-w-2xl mx-auto leading-relaxed">
-              Explore our comprehensive range of indoor design solutions
+              {t('indoorDesign.categories.description')}
             </p>
           </motion.div>
           
@@ -136,7 +138,7 @@ export default function IndoorDesign() {
                         <div className="flex items-center gap-2">
                           <div className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
                           <span className="text-brand-gold text-xs font-bold tracking-wider uppercase">
-                            {category.projectCount} Projects
+                            {category.projectCount} {t('indoorDesign.projects')}
                           </span>
                         </div>
                       </div>
@@ -163,7 +165,7 @@ export default function IndoorDesign() {
                       {/* CTA Button */}
                       <div className="flex items-center justify-between pt-4 border-t border-white/10">
                         <span className="text-brand-gold text-sm font-semibold tracking-wide uppercase group-hover:text-white transition-colors duration-300">
-                          Explore Category
+                          {t('indoorDesign.exploreCategory')}
                         </span>
                         <div className="w-10 h-10 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center group-hover:bg-brand-gold group-hover:border-brand-gold transition-all duration-300">
                           <svg 

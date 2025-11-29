@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { ImageLightbox } from './ImageLightbox';
+import { useI18n } from '@/lib/i18n';
 
 export const HeroParallax = ({
   products,
@@ -38,11 +39,12 @@ export const HeroParallax = ({
     setLightboxOpen(true);
   };
 
+  const { t } = useI18n();
   const lightboxImages = products.map(product => ({
     src: product.thumbnail,
     title: product.title,
-    category: product.link.includes('outdoor') ? 'Outdoor Design' : 'Indoor Design',
-    description: 'Premium design installation showcasing craftsmanship and attention to detail'
+    category: product.link.includes('outdoor') ? t('hero.category.outdoor') : t('hero.category.indoor'),
+    description: t('hero.description')
   }));
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -120,16 +122,16 @@ export const HeroParallax = ({
         {/* Portfolio Section Header - Moving with Parallax */}
         <div className="text-center mb-20 px-4">
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight">
-            Crafted{" "}
+            {t('home.hero.craftedExcellence')}{" "}
             <span className="font-bold bg-gradient-to-r from-brand-gold via-brand-gold to-white bg-clip-text text-transparent">
-              Excellence
+              {t('home.hero.craftedExcellenceHighlight')}
             </span>
           </h2>
           
           <div className="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mb-6 w-20" />
           
           <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light">
-            Every pergola tells a story of precision and passion
+            {t('home.hero.story')}
           </p>
         </div>
 
@@ -192,6 +194,7 @@ export const HeroParallax = ({
 export const Header = () => {
   const { startTransition, endTransition } = useTransition();
   const router = useRouter();
+  const { t } = useI18n();
 
   const handleNavigation = (path: string, cardRef: React.RefObject<HTMLDivElement>, backgroundImage: string, title: string) => {
     if (cardRef.current) {
@@ -227,17 +230,16 @@ export const Header = () => {
           className="mb-6"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-white leading-[0.9] tracking-tight drop-shadow-2xl text-center mb-1">
-            pergolas crafted
+            {t('home.hero.title')}
           </h1>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.9] tracking-tight text-white drop-shadow-2xl text-center">
-            to{" "}
             <AuroraText 
               colors={["#CF9160", "#7D7A71", "#FFFFFF", "#CF9160"]}
               speed={1.5}
               className="font-bold"
             >
-              perfection
+              {t('home.hero.titleHighlight')}
             </AuroraText>
           </h1>
         </motion.div>
@@ -257,8 +259,7 @@ export const Header = () => {
           transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
           className="text-base md:text-lg text-white/85 max-w-xl mx-auto mb-8 leading-relaxed font-normal text-center"
         >
-          Transform your outdoor space with bespoke pergolas designed with precision, 
-          built with passion, and crafted to stand the test of time.
+          {t('home.hero.subtitle')}
         </motion.p>
 
         {/* Design Choice Cards */}
@@ -285,7 +286,7 @@ export const Header = () => {
           className="flex flex-col items-center mt-8 mb-12"
         >
           <p className="text-white/70 text-sm font-medium mb-4 tracking-wide">
-            Explore Our Work
+            {t('home.hero.exploreWork')}
           </p>
           <motion.div
             animate={{ 
@@ -378,6 +379,7 @@ const OutdoorDesignCard = () => {
   const { startTransition, endTransition } = useTransition();
   const router = useRouter();
   const cardRef = useRef<HTMLDivElement>(null);
+  const { t } = useI18n();
 
   const handleClick = () => {
     if (cardRef.current) {
@@ -439,18 +441,18 @@ const OutdoorDesignCard = () => {
             
             {/* Enhanced typography with better contrast */}
             <h3 className="text-2xl md:text-3xl font-light text-white mb-4 group-hover:text-brand-gold transition-colors duration-300 tracking-tight drop-shadow-lg">
-              Outdoor <span className="font-bold bg-gradient-to-r from-brand-gold to-white bg-clip-text text-transparent">Design</span>
+              {t('home.hero.outdoorCard.title')} <span className="font-bold bg-gradient-to-r from-brand-gold to-white bg-clip-text text-transparent">{t('home.hero.outdoorCard.titleHighlight')}</span>
             </h3>
             
             {/* Better description styling */}
             <p className="text-white/80 group-hover:text-white/95 transition-colors duration-300 leading-relaxed mb-6 text-sm md:text-base">
-              Premium pergolas, shade solutions, and complete outdoor living experiences
+              {t('home.hero.outdoorCard.description')}
             </p>
             
             {/* Enhanced CTA with better visual feedback */}
             <div className="flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <div className="flex items-center gap-2 text-brand-gold group-hover:text-white transition-colors duration-300">
-                <span className="text-sm font-medium tracking-wide">Explore</span>
+                <span className="text-sm font-medium tracking-wide">{t('home.hero.outdoorCard.explore')}</span>
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -467,6 +469,7 @@ const IndoorDesignCard = () => {
   const { startTransition, endTransition } = useTransition();
   const router = useRouter();
   const cardRef = useRef<HTMLDivElement>(null);
+  const { t } = useI18n();
 
   const handleClick = () => {
     if (cardRef.current) {
@@ -528,18 +531,18 @@ const IndoorDesignCard = () => {
             
             {/* Enhanced typography with better contrast */}
             <h3 className="text-2xl md:text-3xl font-light text-white mb-4 group-hover:text-brand-gold transition-colors duration-300 tracking-tight drop-shadow-lg">
-              Indoor <span className="font-bold bg-gradient-to-r from-brand-gold to-white bg-clip-text text-transparent">Design</span>
+              {t('home.hero.indoorCard.title')} <span className="font-bold bg-gradient-to-r from-brand-gold to-white bg-clip-text text-transparent">{t('home.hero.indoorCard.titleHighlight')}</span>
             </h3>
             
             {/* Better description styling */}
             <p className="text-white/80 group-hover:text-white/95 transition-colors duration-300 leading-relaxed mb-6 text-sm md:text-base">
-              Sophisticated indoor environments with custom architectural elements
+              {t('home.hero.indoorCard.description')}
             </p>
             
             {/* Enhanced CTA with better visual feedback */}
             <div className="flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <div className="flex items-center gap-2 text-brand-gold group-hover:text-white transition-colors duration-300">
-                <span className="text-sm font-medium tracking-wide">Explore</span>
+                <span className="text-sm font-medium tracking-wide">{t('home.hero.indoorCard.explore')}</span>
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
