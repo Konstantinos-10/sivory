@@ -186,7 +186,7 @@ export const Header = () => {
 
 
   return (
-    <div className="max-w-7xl relative mx-auto pt-20 pb-16 md:pt-12 md:pb-24 px-4 w-full left-0 top-0 z-20">
+    <div className="max-w-7xl relative mx-auto pt-28 pb-16 md:pt-20 md:pb-24 px-4 w-full left-0 top-0 z-20">
       {/* Backdrop for text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-transparent backdrop-blur-md rounded-3xl -mx-6 -my-6" />
       
