@@ -31,7 +31,7 @@ const HeroSection = () => {
     { number: '24/7', label: 'Customer Support' }
   ]
 
-  const containerVariants = {
+  const containerVariants: any = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -42,7 +42,7 @@ const HeroSection = () => {
     }
   }
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
@@ -54,7 +54,7 @@ const HeroSection = () => {
     }
   }
 
-  const titleVariants = {
+  const titleVariants: any = {
     hidden: { scale: 0.8, opacity: 0 },
     visible: {
       scale: 1,
@@ -66,7 +66,7 @@ const HeroSection = () => {
     }
   }
 
-  const statsVariants = {
+  const statsVariants: any = {
     hidden: { x: -30, opacity: 0 },
     visible: {
       x: 0,
