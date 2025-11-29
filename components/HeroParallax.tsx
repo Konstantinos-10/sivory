@@ -15,6 +15,7 @@ import { useState, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { ImageLightbox } from './ImageLightbox';
 import { useI18n } from '@/lib/i18n';
+import { GlowingEffect } from './GlowingEffect';
 
 export const HeroParallax = ({
   products,
@@ -30,22 +31,7 @@ export const HeroParallax = ({
   const thirdRow = products.slice(10, 15);
   const ref = React.useRef(null);
   
-  // Lightbox state
-  const [lightboxOpen, setLightboxOpen] = React.useState(false);
-  const [lightboxIndex, setLightboxIndex] = React.useState(0);
-
-  const handleImageClick = (index: number) => {
-    setLightboxIndex(index);
-    setLightboxOpen(true);
-  };
-
   const { t } = useI18n();
-  const lightboxImages = products.map(product => ({
-    src: product.thumbnail,
-    title: product.title,
-    category: product.link.includes('outdoor') ? t('hero.category.outdoor') : t('hero.category.indoor'),
-    description: t('hero.description')
-  }));
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -145,7 +131,6 @@ export const HeroParallax = ({
               translate={translateX}
               key={product.title}
               isMobile={isMobile}
-              onClick={() => handleImageClick(index)}
             />
           ))}
         </motion.div>
@@ -159,7 +144,6 @@ export const HeroParallax = ({
               translate={translateXReverse}
               key={product.title}
               isMobile={isMobile}
-              onClick={() => handleImageClick(index + 5)}
             />
           ))}
         </motion.div>
@@ -173,20 +157,10 @@ export const HeroParallax = ({
               translate={translateX}
               key={product.title}
               isMobile={isMobile}
-              onClick={() => handleImageClick(index + 10)}
             />
           ))}
         </motion.div>
       </motion.div>
-
-      {/* Image Lightbox */}
-      <ImageLightbox
-        images={lightboxImages}
-        currentIndex={lightboxIndex}
-        isOpen={lightboxOpen}
-        onClose={() => setLightboxOpen(false)}
-        onNavigate={setLightboxIndex}
-      />
     </div>
   );
 };
@@ -212,7 +186,7 @@ export const Header = () => {
 
 
   return (
-    <div className="max-w-7xl relative mx-auto pt-8 pb-16 md:pt-12 md:pb-24 px-4 w-full left-0 top-0 z-20">
+    <div className="max-w-7xl relative mx-auto pt-20 pb-16 md:pt-12 md:pb-24 px-4 w-full left-0 top-0 z-20">
       {/* Backdrop for text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-transparent backdrop-blur-md rounded-3xl -mx-6 -my-6" />
       
@@ -343,12 +317,11 @@ export const ProductCard = ({
       }}
       key={product.title}
       className={cn(
-        "group/product relative shrink-0 touch-manipulation cursor-pointer",
+        "group/product relative shrink-0 touch-manipulation",
         isMobile 
           ? "h-64 w-[20rem] sm:h-80 sm:w-[24rem]" 
           : "h-96 w-[30rem]"
       )}
-      onClick={onClick}
     >
       <div className="block group-hover/product:shadow-2xl group-hover/product:shadow-brand-gold/20">
         <img
@@ -408,18 +381,33 @@ const OutdoorDesignCard = () => {
         y: -8
       }}
       whileTap={{ scale: 0.98 }}
-      className="group cursor-pointer relative overflow-hidden"
+      className="group cursor-pointer relative"
     >
       <div className="relative">
-        {/* Subtle base border */}
-        <div className="absolute inset-0 rounded-2xl border border-white/10 group-hover:border-brand-gold/30 transition-all duration-500 z-[1]" />
+        {/* Animated Glowing Effect - Behind the card */}
+        <div className="absolute -inset-[3px] z-0 rounded-2xl">
+          <GlowingEffect
+            blur={15}
+            proximity={250}
+            spread={80}
+            variant="default"
+            glow={true}
+            disabled={false}
+            movementDuration={0.8}
+            borderWidth={3}
+            inactiveZone={0.2}
+          />
+        </div>
+        
+        {/* Sharp Border Layer - More visible by default */}
+        <div className="absolute inset-0 z-[5] rounded-2xl border-2 border-brand-gold/70 group-hover:border-brand-gold shadow-[0_0_20px_rgba(207,145,96,0.3)] group-hover:shadow-[0_0_30px_rgba(207,145,96,0.5)] transition-all duration-300 pointer-events-none" />
         
         {/* Glass morphism container */}
-        <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl hover:shadow-brand-gold/20 transition-all duration-500 group-hover:bg-white/8">
+        <div className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-8 shadow-2xl hover:shadow-brand-gold/40 transition-all duration-500 group-hover:bg-white/12 z-10 overflow-hidden">
           
           {/* Background image with better overlay */}
           <div 
-            className="absolute inset-0 bg-cover bg-center rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"
+            className="absolute inset-0 bg-cover bg-center rounded-2xl opacity-25 group-hover:opacity-35 transition-opacity duration-500"
             style={{ backgroundImage: `url('/images/outdoorcard.png')` }}
           />
           
@@ -498,18 +486,33 @@ const IndoorDesignCard = () => {
         y: -8
       }}
       whileTap={{ scale: 0.98 }}
-      className="group cursor-pointer relative overflow-hidden"
+      className="group cursor-pointer relative"
     >
       <div className="relative">
-        {/* Subtle base border */}
-        <div className="absolute inset-0 rounded-2xl border border-white/10 group-hover:border-brand-gold/30 transition-all duration-500 z-[1]" />
+        {/* Animated Glowing Effect - Behind the card */}
+        <div className="absolute -inset-[3px] z-0 rounded-2xl">
+          <GlowingEffect
+            blur={15}
+            proximity={250}
+            spread={80}
+            variant="default"
+            glow={true}
+            disabled={false}
+            movementDuration={0.8}
+            borderWidth={3}
+            inactiveZone={0.2}
+          />
+        </div>
+        
+        {/* Sharp Border Layer - More visible by default */}
+        <div className="absolute inset-0 z-[5] rounded-2xl border-2 border-brand-gold/70 group-hover:border-brand-gold shadow-[0_0_20px_rgba(207,145,96,0.3)] group-hover:shadow-[0_0_30px_rgba(207,145,96,0.5)] transition-all duration-300 pointer-events-none" />
         
         {/* Glass morphism container */}
-        <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl hover:shadow-brand-gold/20 transition-all duration-500 group-hover:bg-white/8">
+        <div className="relative bg-white/8 backdrop-blur-xl rounded-2xl p-8 shadow-2xl hover:shadow-brand-gold/40 transition-all duration-500 group-hover:bg-white/12 z-10 overflow-hidden">
           
           {/* Background image with better overlay */}
           <div 
-            className="absolute inset-0 bg-cover bg-center rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"
+            className="absolute inset-0 bg-cover bg-center rounded-2xl opacity-25 group-hover:opacity-35 transition-opacity duration-500"
             style={{ backgroundImage: `url('/images/indoorblind.png')` }}
           />
           

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { ProfessionalFooter } from '@/components/ProfessionalFooter';
 import { useI18n } from '@/lib/i18n';
 
 export default function ContactPage() {
@@ -31,7 +32,7 @@ export default function ContactPage() {
       {/* Background texture overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-gold/10 opacity-30" />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 md:pt-40 md:pb-24 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -168,7 +169,7 @@ export default function ContactPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     </div>
-                    <span className="text-white/80 group-hover:text-white transition-colors duration-300">+1 (555) 123-4567</span>
+                    <a href="tel:+35799640720" className="text-white/80 group-hover:text-brand-gold transition-colors duration-300">+357 99640720</a>
                   </div>
                   <div className="flex items-center group">
                     <div className="w-10 h-10 rounded-full bg-brand-gold/10 flex items-center justify-center mr-4 group-hover:bg-brand-gold/20 transition-colors duration-300">
@@ -221,6 +222,9 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </div>
+      
+      {/* Professional Footer */}
+      <ProfessionalFooter pageType="home" />
     </div>
   );
 }

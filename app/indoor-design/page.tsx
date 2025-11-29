@@ -38,76 +38,29 @@ export default function IndoorDesign() {
 
   return (
     <AuroraBackground className="min-h-screen">
-      {/* Hero Section */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="relative pt-32 pb-20 md:pt-40 md:pb-24 z-10 w-full"
-      >
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <div className="text-brand-gold text-sm md:text-base font-semibold tracking-[0.2em] uppercase mb-8">
-              {t('indoorDesign.portfolio')}
-            </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-8 tracking-tight leading-tight">
-              {t('indoorDesign.title')} <span className="font-bold bg-gradient-to-r from-brand-gold via-brand-gold to-white bg-clip-text text-transparent">{t('indoorDesign.titleHighlight')}</span>
-            </h1>
-            
-            {/* Decorative line */}
-            <div className="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mb-12 w-32" />
-            
-            <p className="text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-relaxed font-light">
-              {t('indoorDesign.description')}
-            </p>
-          </motion.div>
-
-          {/* Back Button */}
-          <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="flex justify-center mb-16"
-          >
-            <Link href="/">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-3 px-8 py-4 border-2 border-brand-gold/60 text-white font-semibold rounded-full hover:bg-brand-gold hover:text-black transition-all duration-300 backdrop-blur-sm bg-white/8 shadow-lg hover:shadow-xl"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                {t('common.backToHome')}
-              </motion.button>
-            </Link>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Categories Grid */}
-      <section className="py-24 relative z-10 w-full">
+      {/* Compact Page Header */}
+      <section className="relative pt-32 md:pt-36 pb-12 md:pb-16 z-10 w-full">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-center mb-20"
+            transition={{ duration: 0.6 }}
+            className="text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-white mb-6 tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-light text-white mb-4 tracking-tight">
               {t('indoorDesign.categories.title')} <span className="font-bold text-brand-gold">{t('indoorDesign.categories.titleHighlight')}</span>
-            </h2>
-            <div className="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mb-8 w-24" />
+            </h1>
+            <div className="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mb-6 w-24" />
             <p className="text-white/70 max-w-2xl mx-auto leading-relaxed">
               {t('indoorDesign.categories.description')}
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Categories Grid */}
+      <section className="pb-24 relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((category, index) => (
@@ -132,16 +85,6 @@ export default function IndoorDesign() {
                       />
                       {/* Dark gradient overlay for better text contrast */}
                       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/90" />
-                      
-                      {/* Category Badge */}
-                      <div className="absolute top-4 right-4 px-4 py-2 bg-black/60 backdrop-blur-md border border-brand-gold/30 rounded-full">
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
-                          <span className="text-brand-gold text-xs font-bold tracking-wider uppercase">
-                            {category.projectCount} {t('indoorDesign.projects')}
-                          </span>
-                        </div>
-                      </div>
 
                       {/* Premium shine effect */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />

@@ -11,6 +11,7 @@ interface ProfessionalFooterProps {
 export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
   const { t } = useI18n();
   const isOutdoor = pageType === 'outdoor'
+  const isHome = pageType === 'home'
   
   return (
     <footer className="relative overflow-hidden">
@@ -49,7 +50,8 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
       </div>
 
       <div className="relative z-10">
-        {/* Main CTA Section */}
+        {/* Main CTA Section - Hidden on home page since we have ContactFormSection */}
+        {!isHome && (
         <motion.section
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -88,37 +90,42 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="relative inline-flex items-center px-12 py-5 bg-gradient-to-r from-brand-gold via-brand-gold to-brand-gold/80 text-black font-bold rounded-full shadow-2xl hover:shadow-brand-gold/30 transition-all duration-300 group overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-brand-gold/20 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
-                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
-                  <span className="relative z-10 flex items-center gap-3">
-                    {t('footer.getFreeQuote')}
-                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </span>
-                </motion.button>
+                <Link href="/contact">
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="relative inline-flex items-center px-12 py-5 bg-gradient-to-r from-brand-gold via-brand-gold to-brand-gold/80 text-black font-bold rounded-full shadow-2xl hover:shadow-brand-gold/30 transition-all duration-300 group overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-brand-gold/20 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+                    <span className="relative z-10 flex items-center gap-3">
+                      {t('footer.getFreeQuote')}
+                      <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </span>
+                  </motion.button>
+                </Link>
 
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="relative inline-flex items-center px-12 py-5 border-2 border-brand-gold/60 text-white font-semibold rounded-full hover:bg-brand-gold hover:text-black transition-all duration-300 backdrop-blur-sm bg-white/8 shadow-lg hover:shadow-xl"
-                >
-                  <span className="flex items-center gap-3">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    {t('footer.callNow')}
-                  </span>
-                </motion.button>
+                <a href="tel:+35799640720">
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="relative inline-flex items-center px-12 py-5 border-2 border-brand-gold/60 text-white font-semibold rounded-full hover:bg-brand-gold hover:text-black transition-all duration-300 backdrop-blur-sm bg-white/8 shadow-lg hover:shadow-xl"
+                  >
+                    <span className="flex items-center gap-3">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      {t('footer.callNow')}
+                    </span>
+                  </motion.button>
+                </a>
               </div>
             </div>
           </div>
         </motion.section>
+        )}
 
         {/* Footer Content */}
         <motion.div
@@ -211,7 +218,7 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
                       </div>
                       <div>
                         <p className="text-white/70 text-sm">{t('footer.phone')}</p>
-                        <p className="text-white font-medium">+1 (555) 123-4567</p>
+                        <a href="tel:+35799640720" className="text-white font-medium hover:text-brand-gold transition-colors">+357 99640720</a>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
@@ -256,10 +263,10 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
                   {t('footer.copyright')}
                 </p>
                 <div className="flex gap-6 text-sm">
-                  <Link href="/privacy" className="text-white/60 hover:text-brand-gold transition-colors duration-300">
+                  <Link href="/privacy-policy" className="text-white/60 hover:text-brand-gold transition-colors duration-300">
                     {t('footer.privacyPolicy')}
                   </Link>
-                  <Link href="/terms" className="text-white/60 hover:text-brand-gold transition-colors duration-300">
+                  <Link href="/terms-of-service" className="text-white/60 hover:text-brand-gold transition-colors duration-300">
                     {t('footer.termsOfService')}
                   </Link>
                 </div>

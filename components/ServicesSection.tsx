@@ -165,9 +165,15 @@ const ServicesSection = () => {
           className="text-center mt-20"
         >
           <motion.button
+            onClick={() => {
+              document.getElementById('contact-form')?.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }}
             whileHover={{ scale: 1.05, y: -3 }}
             whileTap={{ scale: 0.95 }}
-            className="relative inline-flex items-center px-10 py-5 bg-gradient-to-r from-brand-gold via-brand-gold to-brand-gold/80 text-black font-bold rounded-full shadow-2xl hover:shadow-brand-gold/30 transition-all duration-300 group overflow-hidden"
+            className="relative inline-flex items-center px-10 py-5 bg-gradient-to-r from-brand-gold via-brand-gold to-brand-gold/80 text-black font-bold rounded-full shadow-2xl hover:shadow-brand-gold/30 transition-all duration-300 group overflow-hidden cursor-pointer"
           >
             {/* Button glow effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-brand-gold/20 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />

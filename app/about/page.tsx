@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { AuroraBackground } from '@/components/AuroraBackground';
+import { ProfessionalFooter } from '@/components/ProfessionalFooter';
 import { useI18n } from '@/lib/i18n';
 
 export default function AboutPage() {
@@ -142,6 +143,9 @@ export default function AboutPage() {
           </div>
         </motion.div>
       </div>
+      
+      {/* Professional Footer */}
+      <ProfessionalFooter pageType="home" />
     </AuroraBackground>
   );
 }

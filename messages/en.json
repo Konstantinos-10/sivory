@@ -88,9 +88,10 @@
     }
   },
   "contact": {
-    "title": "Get in",
-    "titleHighlight": "Touch",
-    "description": "Ready to transform your space? Let's discuss your project and bring your vision to life.",
+    "badge": "Get in Touch",
+    "title": "Start Your",
+    "titleHighlight": "Project Today",
+    "description": "Ready to transform your space? Fill out the form below and let's bring your vision to life.",
     "form": {
       "title": "Send us a",
       "titleHighlight": "message",
@@ -100,10 +101,18 @@
       "emailPlaceholder": "your@email.com",
       "phone": "Phone",
       "phoneOptional": "(Optional)",
-      "phonePlaceholder": "+1 (555) 123-4567",
+      "phonePlaceholder": "+357 99640720",
+      "projectType": "Project Type",
+      "outdoor": "Outdoor Design",
+      "indoor": "Indoor Design",
+      "both": "Both (Indoor & Outdoor)",
+      "consultation": "General Consultation",
       "message": "Message",
       "messagePlaceholder": "Tell us about your project...",
-      "submit": "Send Message"
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message Sent Successfully!",
+      "privacy": "Your information is safe with us and will never be shared."
     },
     "info": {
       "title": "Contact",
