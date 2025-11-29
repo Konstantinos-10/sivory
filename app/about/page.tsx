@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { AuroraBackground } from '@/components/AuroraBackground';
+import { useI18n } from '@/lib/i18n';
 
 export default function AboutPage() {
+  const { t } = useI18n();
+  
   return (
     <AuroraBackground className="min-h-screen">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-24 md:pt-40 md:pb-32 relative z-10 w-full">
@@ -14,17 +17,17 @@ export default function AboutPage() {
           className="text-center mb-24"
         >
           <div className="text-brand-gold text-sm md:text-base font-semibold tracking-[0.2em] uppercase mb-8">
-            Our Story
+            {t("about.ourStory")}
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-8 tracking-tight leading-tight">
-            About <span className="font-bold bg-gradient-to-r from-brand-gold via-brand-gold to-white bg-clip-text text-transparent">Sivory</span>
+            {t("about.title")} <span className="font-bold bg-gradient-to-r from-brand-gold via-brand-gold to-white bg-clip-text text-transparent">{t("about.titleHighlight")}</span>
           </h1>
           
           {/* Decorative line */}
           <div className="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mb-12 w-32" />
           
           <p className="text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-relaxed font-light">
-            Crafting exceptional outdoor and indoor spaces with passion, precision, and years of expertise that transforms visions into reality.
+            {t("about.description")}
           </p>
         </motion.div>
 
@@ -36,15 +39,13 @@ export default function AboutPage() {
         >
           <div className="space-y-8">
             <h2 className="text-3xl md:text-4xl font-light text-white mb-8 tracking-tight">
-              Our <span className="font-bold text-brand-gold">Journey</span>
+              {t("about.journey.title")} <span className="font-bold text-brand-gold">{t("about.journey.titleHighlight")}</span>
             </h2>
             <p className="text-lg text-white/80 mb-8 leading-relaxed">
-              With over a decade of experience in architectural design and construction, Sivory Design has become 
-              synonymous with excellence in creating beautiful, functional outdoor and indoor spaces that exceed expectations.
+              {t("about.journey.paragraph1")}
             </p>
             <p className="text-lg text-white/70 mb-12 leading-relaxed">
-              Our team of skilled craftsmen and designers work tirelessly to bring your vision to life, 
-              ensuring every project meets our high standards of quality, innovation, and aesthetic appeal.
+              {t("about.journey.paragraph2")}
             </p>
             
             {/* Stats Grid */}
@@ -57,7 +58,7 @@ export default function AboutPage() {
                 className="text-center p-8 bg-white/8 backdrop-blur-xl rounded-3xl border border-white/10 hover:border-brand-gold/40 transition-all duration-500 group"
               >
                 <h3 className="text-4xl md:text-5xl font-bold text-brand-gold mb-3 group-hover:text-white transition-colors duration-300">15+</h3>
-                <p className="text-white/70 font-medium text-lg group-hover:text-white/90 transition-colors duration-300">Years Experience</p>
+                <p className="text-white/70 font-medium text-lg group-hover:text-white/90 transition-colors duration-300">{t("about.stats.yearsExperience")}</p>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
@@ -67,7 +68,7 @@ export default function AboutPage() {
                 className="text-center p-8 bg-white/8 backdrop-blur-xl rounded-3xl border border-white/10 hover:border-brand-gold/40 transition-all duration-500 group"
               >
                 <h3 className="text-4xl md:text-5xl font-bold text-brand-gold mb-3 group-hover:text-white transition-colors duration-300">500+</h3>
-                <p className="text-white/70 font-medium text-lg group-hover:text-white/90 transition-colors duration-300">Projects Completed</p>
+                <p className="text-white/70 font-medium text-lg group-hover:text-white/90 transition-colors duration-300">{t("about.stats.projectsCompleted")}</p>
               </motion.div>
             </div>
           </div>
@@ -84,11 +85,11 @@ export default function AboutPage() {
             <div className="relative z-10 text-center">
               <div className="text-brand-gold/60 text-8xl mb-6 leading-none">"</div>
               <p className="text-white/90 text-xl md:text-2xl font-light italic leading-relaxed mb-8">
-                Excellence is not a skill, it's an attitude that we bring to every project, every detail, every moment.
+                {t("about.quote")}
               </p>
               <div className="text-brand-gold/60 text-8xl rotate-180 leading-none">"</div>
               <div className="mt-8">
-                <p className="text-brand-gold font-semibold text-lg">— Sivory Design Team</p>
+                <p className="text-brand-gold font-semibold text-lg">{t("about.quoteAuthor")}</p>
               </div>
             </div>
           </motion.div>
@@ -102,7 +103,7 @@ export default function AboutPage() {
           className="text-center"
         >
           <h2 className="text-3xl md:text-4xl font-light text-white mb-8 tracking-tight">
-            Our <span className="font-bold text-brand-gold">Values</span>
+            {t("about.values.title")} <span className="font-bold text-brand-gold">{t("about.values.titleHighlight")}</span>
           </h2>
           
           <div className="h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mb-16 w-24" />
@@ -110,16 +111,16 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Quality Craftsmanship",
-                description: "Every project is executed with meticulous attention to detail and premium materials."
+                title: t("about.values.qualityCraftsmanship.title"),
+                description: t("about.values.qualityCraftsmanship.description")
               },
               {
-                title: "Innovation",
-                description: "We continuously push boundaries to create unique, cutting-edge design solutions."
+                title: t("about.values.innovation.title"),
+                description: t("about.values.innovation.description")
               },
               {
-                title: "Client Partnership",
-                description: "Your vision guides our process, ensuring results that exceed your expectations."
+                title: t("about.values.clientPartnership.title"),
+                description: t("about.values.clientPartnership.description")
               }
             ].map((value, index) => (
               <motion.div

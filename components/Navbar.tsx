@@ -11,6 +11,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useRef, useState } from "react";
+import { useI18n } from "@/lib/i18n";
+import { LanguageToggle } from "@/components/LanguageToggle";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -589,12 +591,13 @@ export const NavbarButton = ({
 // Main Navbar Implementation
 const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useI18n();
 
   const navItems = [
-    { name: "Home", link: "/" },
-    { name: "Indoor Design", link: "/indoor-design" },
-    { name: "Outdoor Design", link: "/outdoor-design" },
-    { name: "About", link: "/about" },
+    { name: t("nav.home"), link: "/" },
+    { name: t("nav.indoorDesign"), link: "/indoor-design" },
+    { name: t("nav.outdoorDesign"), link: "/outdoor-design" },
+    { name: t("nav.about"), link: "/about" },
   ];
 
   return (
@@ -606,11 +609,13 @@ const MainNavbar = () => {
             <NavbarLogo scrollStage={scrollStage} />
             <NavItems items={navItems} />
             <motion.div
+              className="flex items-center gap-3"
               animate={{
                 scale: scrollStage >= 3 ? 0.9 : 1,
               }}
               transition={{ duration: 0.3 }}
             >
+              <LanguageToggle scrollStage={scrollStage} />
               <NavbarButton 
                 href="/contact" 
                 variant="primary"
@@ -619,7 +624,7 @@ const MainNavbar = () => {
                   scrollStage >= 2 && "bg-gradient-to-r from-brand-gold to-brand-gold/80 hover:from-brand-gold/90 hover:to-brand-gold/70"
                 )}
               >
-                Contact
+                {t("nav.contact")}
               </NavbarButton>
             </motion.div>
           </>
@@ -677,13 +682,18 @@ const MainNavbar = () => {
                 transition={{ delay: navItems.length * 0.1 + 0.2, duration: 0.3 }}
                 className="w-full mt-4 pt-4 border-t border-white/10"
               >
-                <NavbarButton 
-                  href="/contact" 
-                  variant="primary" 
-                  className="w-full justify-center py-4 text-lg font-semibold bg-gradient-to-r from-brand-gold to-brand-gold/80 hover:from-brand-gold/90 hover:to-brand-gold/70 touch-manipulation"
-                >
-                  Contact Us
-                </NavbarButton>
+                <div className="flex flex-col gap-3">
+                  <div className="flex justify-center">
+                    <LanguageToggle scrollStage={scrollStage} />
+                  </div>
+                  <NavbarButton 
+                    href="/contact" 
+                    variant="primary" 
+                    className="w-full justify-center py-4 text-lg font-semibold bg-gradient-to-r from-brand-gold to-brand-gold/80 hover:from-brand-gold/90 hover:to-brand-gold/70 touch-manipulation"
+                  >
+                    {t("nav.contactUs")}
+                  </NavbarButton>
+                </div>
               </motion.div>
             </MobileNavMenu>
           </>

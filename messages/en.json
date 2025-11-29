@@ -1,0 +1,215 @@
+{
+  "nav": {
+    "home": "Home",
+    "indoorDesign": "Indoor Design",
+    "outdoorDesign": "Outdoor Design",
+    "about": "About",
+    "contact": "Contact",
+    "contactUs": "Contact Us"
+  },
+  "home": {
+    "hero": {
+      "title": "pergolas crafted",
+      "titleHighlight": "to perfection",
+      "subtitle": "Transform your outdoor space with bespoke pergolas designed with precision, built with passion, and crafted to stand the test of time.",
+      "exploreWork": "Explore Our Work",
+      "craftedExcellence": "Crafted",
+      "craftedExcellenceHighlight": "Excellence",
+      "story": "Every pergola tells a story of precision and passion",
+      "outdoorCard": {
+        "title": "Outdoor",
+        "titleHighlight": "Design",
+        "description": "Premium pergolas, shade solutions, and complete outdoor living experiences",
+        "explore": "Explore"
+      },
+      "indoorCard": {
+        "title": "Indoor",
+        "titleHighlight": "Design",
+        "description": "Sophisticated indoor environments with custom architectural elements",
+        "explore": "Explore"
+      }
+    },
+    "services": {
+      "title": "Our Services",
+      "heading": "Crafting Excellence in",
+      "headingHighlight": "Every Detail",
+      "description": "From initial concept to final installation, we provide comprehensive pergola solutions that transform your outdoor space into a masterpiece of design and functionality.",
+      "customDesign": {
+        "title": "Custom Design",
+        "description": "Bespoke pergola designs tailored to your space, style, and vision. Every project is unique and crafted with precision."
+      },
+      "premiumMaterials": {
+        "title": "Premium Materials",
+        "description": "Only the finest materials are used in our constructions. Weather-resistant, durable, and built to last generations."
+      },
+      "expertInstallation": {
+        "title": "Expert Installation",
+        "description": "Professional installation by certified craftsmen with years of experience in outdoor construction and design."
+      },
+      "lifetimeSupport": {
+        "title": "Lifetime Support",
+        "description": "Comprehensive warranty and ongoing support. We stand behind our work with dedicated customer service for life."
+      },
+      "cta": "Start Your Project"
+    }
+  },
+  "about": {
+    "ourStory": "Our Story",
+    "title": "About",
+    "titleHighlight": "Sivory",
+    "description": "Crafting exceptional outdoor and indoor spaces with passion, precision, and years of expertise that transforms visions into reality.",
+    "journey": {
+      "title": "Our",
+      "titleHighlight": "Journey",
+      "paragraph1": "With over a decade of experience in architectural design and construction, Sivory Design has become synonymous with excellence in creating beautiful, functional outdoor and indoor spaces that exceed expectations.",
+      "paragraph2": "Our team of skilled craftsmen and designers work tirelessly to bring your vision to life, ensuring every project meets our high standards of quality, innovation, and aesthetic appeal."
+    },
+    "stats": {
+      "yearsExperience": "Years Experience",
+      "projectsCompleted": "Projects Completed"
+    },
+    "quote": "Excellence is not a skill, it's an attitude that we bring to every project, every detail, every moment.",
+    "quoteAuthor": "— Sivory Design Team",
+    "values": {
+      "title": "Our",
+      "titleHighlight": "Values",
+      "qualityCraftsmanship": {
+        "title": "Quality Craftsmanship",
+        "description": "Every project is executed with meticulous attention to detail and premium materials."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We continuously push boundaries to create unique, cutting-edge design solutions."
+      },
+      "clientPartnership": {
+        "title": "Client Partnership",
+        "description": "Your vision guides our process, ensuring results that exceed your expectations."
+      }
+    }
+  },
+  "contact": {
+    "title": "Get in",
+    "titleHighlight": "Touch",
+    "description": "Ready to transform your space? Let's discuss your project and bring your vision to life.",
+    "form": {
+      "title": "Send us a",
+      "titleHighlight": "message",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phoneOptional": "(Optional)",
+      "phonePlaceholder": "+1 (555) 123-4567",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project...",
+      "submit": "Send Message"
+    },
+    "info": {
+      "title": "Contact",
+      "titleHighlight": "Information"
+    },
+    "hours": {
+      "title": "Business",
+      "titleHighlight": "Hours",
+      "weekdays": "Monday - Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "closed": "Closed"
+    }
+  },
+  "hero": {
+    "category": {
+      "indoor": "Indoor Design",
+      "outdoor": "Outdoor Design"
+    },
+    "description": "Premium design installation showcasing craftsmanship and attention to detail"
+  },
+  "indoorDesign": {
+    "portfolio": "Indoor Design Portfolio",
+    "title": "Interior",
+    "titleHighlight": "Excellence",
+    "description": "Creating sophisticated indoor environments with custom pergola structures and architectural elements that transform spaces into works of art.",
+    "categories": {
+      "title": "Indoor",
+      "titleHighlight": "Categories",
+      "description": "Explore our comprehensive range of indoor design solutions",
+      "blinds": {
+        "title": "Blinds",
+        "description": "Premium window blinds that combine functionality with elegant design for perfect light control and privacy"
+      },
+      "curtains": {
+        "title": "Curtains",
+        "description": "Luxurious curtain solutions that add sophistication and warmth to any interior space"
+      },
+      "wallpaper": {
+        "title": "Wallpaper",
+        "description": "Designer wallpapers that transform walls into stunning focal points with texture and style"
+      }
+    },
+    "exploreCategory": "Explore Category",
+    "projects": "Projects"
+  },
+  "outdoorDesign": {
+    "portfolio": "Outdoor Design Portfolio",
+    "title": "Outdoor",
+    "titleHighlight": "Excellence",
+    "description": "Transforming outdoor spaces with premium pergolas, shade solutions, and complete outdoor living experiences that redefine luxury.",
+    "categories": {
+      "title": "Outdoor",
+      "titleHighlight": "Categories",
+      "description": "Explore our comprehensive range of outdoor design solutions",
+      "awningPergola": {
+        "title": "Awning Pergola",
+        "description": "Contemporary pergolas and awning systems for elegant outdoor shade solutions"
+      },
+      "outdoorWallCovering": {
+        "title": "Outdoor Wall Covering",
+        "description": "Premium wall coverings designed for exterior spaces with style and durability"
+      },
+      "perforatedFabrics": {
+        "title": "Perforated Fabrics",
+        "description": "Innovative perforated fabric solutions for light control and privacy"
+      },
+      "umbrellas": {
+        "title": "Umbrellas",
+        "description": "Luxury outdoor umbrellas combining functionality with sophisticated design"
+      },
+      "verticalAwnings": {
+        "title": "Vertical Awnings",
+        "description": "Modern vertical awning systems for optimal sun protection and aesthetics"
+      }
+    },
+    "exploreCategory": "Explore Category",
+    "projects": "Projects"
+  },
+  "footer": {
+    "readyToStart": "Ready to Get Started?",
+    "transform": {
+      "title": "Transform Your",
+      "outdoor": "Outdoor Space",
+      "indoor": "Indoor Space"
+    },
+    "outdoorDescription": "Let's create your perfect outdoor living experience with our premium pergola designs and complete outdoor solutions.",
+    "indoorDescription": "Let's create sophisticated indoor environments with our custom architectural elements and premium design solutions.",
+    "getFreeQuote": "Get Your Free Quote",
+    "callNow": "Call Now",
+    "companyDescription": "Crafting premium pergolas and architectural elements with precision, passion, and years of expertise in creating beautiful spaces.",
+    "quickLinks": "Quick Links",
+    "getInTouch": "Get In Touch",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+    "copyright": "© 2024 Sivory Design. All rights reserved. Crafted with precision and passion.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "common": {
+    "loading": "Loading...",
+    "readMore": "Read More",
+    "viewProject": "View Project",
+    "featured": "Featured",
+    "backToHome": "Back to Home"
+  }
+}
+

@@ -2,12 +2,14 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useI18n } from '@/lib/i18n'
 
 interface ProfessionalFooterProps {
   pageType: 'outdoor' | 'indoor' | 'home'
 }
 
 export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
+  const { t } = useI18n();
   const isOutdoor = pageType === 'outdoor'
   
   return (
@@ -64,14 +66,14 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
               >
                 <div className="w-2 h-2 bg-brand-gold rounded-full animate-pulse" />
                 <span className="text-brand-gold text-sm font-medium tracking-wide uppercase">
-                  Ready to Get Started?
+                  {t('footer.readyToStart')}
                 </span>
               </motion.div>
 
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight">
-                Transform Your{' '}
+                {t('footer.transform.title')}{' '}
                 <span className="font-bold bg-gradient-to-r from-brand-gold via-brand-gold to-white bg-clip-text text-transparent">
-                  {isOutdoor ? 'Outdoor' : 'Indoor'} Space
+                  {isOutdoor ? t('footer.transform.outdoor') : t('footer.transform.indoor')}
                 </span>
               </h2>
               
@@ -79,8 +81,8 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
               
               <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
                 {isOutdoor 
-                  ? "Let's create your perfect outdoor living experience with our premium pergola designs and complete outdoor solutions."
-                  : "Let's create sophisticated indoor environments with our custom architectural elements and premium design solutions."
+                  ? t('footer.outdoorDescription')
+                  : t('footer.indoorDescription')
                 }
               </p>
 
@@ -94,7 +96,7 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
                   <div className="absolute inset-0 bg-gradient-to-r from-brand-gold/20 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
                   <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
                   <span className="relative z-10 flex items-center gap-3">
-                    Get Your Free Quote
+                    {t('footer.getFreeQuote')}
                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -110,7 +112,7 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
-                    Call Now
+                    {t('footer.callNow')}
                   </span>
                 </motion.button>
               </div>
@@ -143,7 +145,7 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
                     <h3 className="text-2xl font-bold text-white">Sivory Design</h3>
                   </div>
                   <p className="text-white/70 leading-relaxed mb-6 max-w-md">
-                    Crafting premium pergolas and architectural elements with precision, passion, and years of expertise in creating beautiful spaces.
+                    {t('footer.companyDescription')}
                   </p>
                   <div className="flex gap-4">
                     {['Facebook', 'Instagram', 'LinkedIn'].map((social) => (
@@ -167,16 +169,16 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 1.0, duration: 0.6 }}
                 >
-                  <h4 className="text-lg font-semibold text-white mb-6">Quick Links</h4>
+                  <h4 className="text-lg font-semibold text-white mb-6">{t('footer.quickLinks')}</h4>
                   <ul className="space-y-4">
                     {[
-                      { name: 'Home', href: '/' },
-                      { name: 'Outdoor Design', href: '/outdoor-design' },
-                      { name: 'Indoor Design', href: '/indoor-design' },
-                      { name: 'About', href: '/about' },
-                      { name: 'Contact', href: '/contact' },
+                      { name: t('nav.home'), href: '/' },
+                      { name: t('nav.outdoorDesign'), href: '/outdoor-design' },
+                      { name: t('nav.indoorDesign'), href: '/indoor-design' },
+                      { name: t('nav.about'), href: '/about' },
+                      { name: t('nav.contact'), href: '/contact' },
                     ].map((link) => (
-                      <li key={link.name}>
+                      <li key={link.href}>
                         <Link 
                           href={link.href}
                           className="text-white/70 hover:text-brand-gold transition-colors duration-300 flex items-center gap-2 group"
@@ -199,7 +201,7 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 1.2, duration: 0.6 }}
                 >
-                  <h4 className="text-lg font-semibold text-white mb-6">Get In Touch</h4>
+                  <h4 className="text-lg font-semibold text-white mb-6">{t('footer.getInTouch')}</h4>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
                       <div className="w-5 h-5 mt-1 text-brand-gold">
@@ -208,7 +210,7 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
                         </svg>
                       </div>
                       <div>
-                        <p className="text-white/70 text-sm">Phone</p>
+                        <p className="text-white/70 text-sm">{t('footer.phone')}</p>
                         <p className="text-white font-medium">+1 (555) 123-4567</p>
                       </div>
                     </div>
@@ -219,7 +221,7 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
                         </svg>
                       </div>
                       <div>
-                        <p className="text-white/70 text-sm">Email</p>
+                        <p className="text-white/70 text-sm">{t('footer.email')}</p>
                         <p className="text-white font-medium">info@sivorydesign.com</p>
                       </div>
                     </div>
@@ -231,7 +233,7 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
                         </svg>
                       </div>
                       <div>
-                        <p className="text-white/70 text-sm">Location</p>
+                        <p className="text-white/70 text-sm">{t('footer.location')}</p>
                         <p className="text-white font-medium">Your City, State</p>
                       </div>
                     </div>
@@ -251,14 +253,14 @@ export const ProfessionalFooter = ({ pageType }: ProfessionalFooterProps) => {
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p className="text-white/60 text-sm">
-                  © 2024 Sivory Design. All rights reserved. Crafted with precision and passion.
+                  {t('footer.copyright')}
                 </p>
                 <div className="flex gap-6 text-sm">
                   <Link href="/privacy" className="text-white/60 hover:text-brand-gold transition-colors duration-300">
-                    Privacy Policy
+                    {t('footer.privacyPolicy')}
                   </Link>
                   <Link href="/terms" className="text-white/60 hover:text-brand-gold transition-colors duration-300">
-                    Terms of Service
+                    {t('footer.termsOfService')}
                   </Link>
                 </div>
               </div>
