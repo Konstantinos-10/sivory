@@ -11,7 +11,7 @@ const ServicesSection = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const { t } = useI18n();
 
-  const containerVariants = {
+  const containerVariants: any = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -22,7 +22,7 @@ const ServicesSection = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { y: 60, opacity: 0 },
     visible: {
       y: 0,
