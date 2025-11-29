@@ -353,6 +353,16 @@ const OutdoorDesignCard = () => {
   const router = useRouter();
   const cardRef = useRef<HTMLDivElement>(null);
   const { t } = useI18n();
+  const [isMobile, setIsMobile] = useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleClick = () => {
     if (cardRef.current) {
@@ -384,15 +394,15 @@ const OutdoorDesignCard = () => {
       className="group cursor-pointer relative"
     >
       <div className="relative">
-        {/* Animated Glowing Effect - Behind the card */}
-        <div className="absolute -inset-[3px] z-0 rounded-2xl">
+        {/* Animated Glowing Effect - Behind the card (disabled on mobile for performance) */}
+        <div className="absolute -inset-[3px] z-0 rounded-2xl pointer-events-none">
           <GlowingEffect
             blur={15}
             proximity={250}
             spread={80}
             variant="default"
             glow={true}
-            disabled={false}
+            disabled={isMobile}
             movementDuration={0.8}
             borderWidth={3}
             inactiveZone={0.2}
@@ -458,6 +468,16 @@ const IndoorDesignCard = () => {
   const router = useRouter();
   const cardRef = useRef<HTMLDivElement>(null);
   const { t } = useI18n();
+  const [isMobile, setIsMobile] = useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleClick = () => {
     if (cardRef.current) {
@@ -489,15 +509,15 @@ const IndoorDesignCard = () => {
       className="group cursor-pointer relative"
     >
       <div className="relative">
-        {/* Animated Glowing Effect - Behind the card */}
-        <div className="absolute -inset-[3px] z-0 rounded-2xl">
+        {/* Animated Glowing Effect - Behind the card (disabled on mobile for performance) */}
+        <div className="absolute -inset-[3px] z-0 rounded-2xl pointer-events-none">
           <GlowingEffect
             blur={15}
             proximity={250}
             spread={80}
             variant="default"
             glow={true}
-            disabled={false}
+            disabled={isMobile}
             movementDuration={0.8}
             borderWidth={3}
             inactiveZone={0.2}
