@@ -1,5 +1,6 @@
 import { HeroParallax } from '../components/HeroParallax'
 import ServicesSection from '../components/ServicesSection'
+import ContactFormSection from '../components/ContactFormSection'
 import { ProfessionalFooter } from '../components/ProfessionalFooter'
 
 // Sivory Design Projects - Real Portfolio
@@ -87,6 +88,7 @@ export default function Home() {
     <main>
       <HeroParallax products={pergolaProjects} />
       <ServicesSection />
+      <ContactFormSection />
       <ProfessionalFooter pageType="home" />
     </main>
   )

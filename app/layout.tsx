@@ -3,6 +3,7 @@ import './globals.css'
 import MainNavbar from '@/components/Navbar'
 import { TransitionProvider } from '@/components/TransitionProvider'
 import { I18nProvider } from '@/lib/i18n'
+import SmoothScroll from '@/components/SmoothScroll'
 
 export const metadata: Metadata = {
   title: 'Sivory Design - Pergolas Crafted to Perfection',
@@ -18,12 +19,14 @@ export default function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning>
         <I18nProvider>
-          <TransitionProvider>
-            <MainNavbar />
-            <main>
-              {children}
-            </main>
-          </TransitionProvider>
+          <SmoothScroll>
+            <TransitionProvider>
+              <MainNavbar />
+              <main>
+                {children}
+              </main>
+            </TransitionProvider>
+          </SmoothScroll>
         </I18nProvider>
       </body>
     </html>
