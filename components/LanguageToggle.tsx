@@ -27,8 +27,16 @@ export function LanguageToggle({ scrollStage = 0 }: { scrollStage?: number }) {
   }, [isOpen])
 
   const languages = [
-    { code: 'en' as const, name: 'English', flag: '🇬🇧' },
-    { code: 'el' as const, name: 'Ελληνικά', flag: '🇬🇷' },
+    { 
+      code: 'en' as const, 
+      name: 'English', 
+      flagUrl: 'https://flagcdn.com/gb.svg'
+    },
+    { 
+      code: 'el' as const, 
+      name: 'Ελληνικά', 
+      flagUrl: 'https://flagcdn.com/gr.svg'
+    },
   ]
 
   const currentLanguage = languages.find(lang => lang.code === locale) || languages[0]
@@ -62,9 +70,14 @@ export function LanguageToggle({ scrollStage = 0 }: { scrollStage?: number }) {
           transition={{ duration: 0.2 }}
         />
         
-        <span className="relative z-10 text-lg">{currentLanguage.flag}</span>
-        <span className="relative z-10 text-sm font-medium hidden sm:inline-block">
-          {currentLanguage.code.toUpperCase()}
+        <span className="relative z-10 w-6 h-4 flex-shrink-0 rounded-sm overflow-hidden">
+          <img
+            src={currentLanguage.flagUrl}
+            alt={`${currentLanguage.name} flag`}
+            width={24}
+            height={16}
+            className="w-full h-full object-cover"
+          />
         </span>
         
         {/* Dropdown arrow */}
@@ -119,7 +132,15 @@ export function LanguageToggle({ scrollStage = 0 }: { scrollStage?: number }) {
                     transition={{ delay: index * 0.05, duration: 0.2 }}
                     whileHover={{ x: 4 }}
                   >
-                    <span className="text-xl">{language.flag}</span>
+                    <span className="w-7 h-5 flex-shrink-0 rounded-sm overflow-hidden relative">
+                      <img
+                        src={language.flagUrl}
+                        alt={`${language.name} flag`}
+                        width={28}
+                        height={20}
+                        className="w-full h-full object-cover"
+                      />
+                    </span>
                     <span className="text-sm font-medium">{language.name}</span>
                     {locale === language.code && (
                       <motion.div
