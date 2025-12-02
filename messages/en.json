@@ -112,6 +112,7 @@
       "submit": "Send Message",
       "sending": "Sending...",
       "success": "Message Sent Successfully!",
+      "error": "Failed to Send",
       "privacy": "Your information is safe with us and will never be shared."
     },
     "info": {

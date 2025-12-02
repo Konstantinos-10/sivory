@@ -15,33 +15,65 @@ const ContactFormSection = () => {
     email: '',
     phone: '',
     message: '',
-    projectType: 'outdoor'
+    projectType: 'outdoor',
+    honeypot: '' // Hidden field for bot detection
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form submitted! Data:', formData);
     setIsSubmitting(true);
+    setErrorMessage('');
     
-    // Simulate form submission (replace with actual API call later)
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      console.log('Sending request to /api/send-email...');
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log('Response status:', response.status);
+      const data = await response.json();
+      console.log('Response data:', data);
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
       setSubmitStatus('success');
       
-      // Reset form after 3 seconds
+      // Reset form after 5 seconds
       setTimeout(() => {
         setFormData({
           name: '',
           email: '',
           phone: '',
           message: '',
-          projectType: 'outdoor'
+          projectType: 'outdoor',
+          honeypot: ''
         });
         setSubmitStatus('idle');
-      }, 3000);
-    }, 1500);
+      }, 5000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
+      
+      // Reset error state after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+        setErrorMessage('');
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -125,6 +157,18 @@ const ContactFormSection = () => {
               <div className="absolute bottom-0 right-0 w-32 h-32 bg-brand-gold/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
               <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
+                {/* Honeypot field - hidden from humans, catches bots */}
+                <input
+                  type="text"
+                  name="honeypot"
+                  value={formData.honeypot}
+                  onChange={handleChange}
+                  className="absolute -left-[9999px] opacity-0 pointer-events-none"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+
                 {/* Name and Email Row */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -222,13 +266,15 @@ const ContactFormSection = () => {
                   className={`w-full py-5 rounded-xl font-bold text-lg transition-all duration-300 relative overflow-hidden group ${
                     submitStatus === 'success'
                       ? 'bg-green-600 text-white'
+                      : submitStatus === 'error'
+                      ? 'bg-red-600 text-white'
                       : isSubmitting
                       ? 'bg-brand-gold/50 text-white/50 cursor-not-allowed'
                       : 'bg-gradient-to-r from-brand-gold via-brand-gold to-brand-gold/80 text-black hover:shadow-2xl hover:shadow-brand-gold/30'
                   }`}
                 >
                   {/* Button shimmer effect */}
-                  {!isSubmitting && submitStatus !== 'success' && (
+                  {!isSubmitting && submitStatus === 'idle' && (
                     <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
                   )}
 
@@ -248,6 +294,13 @@ const ContactFormSection = () => {
                         </svg>
                         {t('contact.form.success')}
                       </>
+                    ) : submitStatus === 'error' ? (
+                      <>
+                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        {t('contact.form.error')}
+                      </>
                     ) : (
                       <>
                         {t('contact.form.submit')}
@@ -258,6 +311,17 @@ const ContactFormSection = () => {
                     )}
                   </span>
                 </motion.button>
+
+                {/* Error Message */}
+                {errorMessage && (
+                  <motion.p 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-red-400 text-sm text-center"
+                  >
+                    {errorMessage}
+                  </motion.p>
+                )}
 
                 {/* Privacy Note */}
                 <p className="text-white/50 text-sm text-center mt-4">
